@@ -87,5 +87,13 @@ namespace WebAPITestProject
             BookService bookService = new BookService();
             Assert.False(bookService.DeleteBook(00000));
         }
+
+        [Fact]
+        public void Test_when_adding_invalid_data_should_return_false()
+        {
+            BookService bookService = new BookService();
+            Book book = new Book { bookName = "Wake", authorName = "Amanda Hocking", isbnNumber = 12345, price = -200.0 };
+            Assert.False(bookService.AddBook(book));
+        }
     }
 }

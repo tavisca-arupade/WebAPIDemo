@@ -15,9 +15,21 @@ namespace WebAPIDemo1.Model
         {
            return _books.GetBooks();
         }
-        public void AddBook(Book book)
+        public bool AddBook(Book book)
         {
-            _books.AddBook(book);
+            if (IsBookValid(book))
+            {
+                _books.AddBook(book);
+                return true;
+            }
+            return false;
+        }
+
+        private bool IsBookValid(Book book)
+        {
+            if (book.bookName is string && book.authorName is string && book.isbnNumber is int && book.price is Double && book.price > 0)
+                return true;
+            return false;
         }
 
         public bool UpdateBook(int id, Book book)

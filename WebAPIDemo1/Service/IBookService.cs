@@ -10,7 +10,7 @@ namespace WebAPIDemo1.Service
     {
         IEnumerable<Book> GetBooks();
         Book GetBookById(int id);
-        void AddBook(Book book);
+        bool AddBook(Book book);
         bool UpdateBook(int id, Book book);
         bool DeleteBook(int id);
     }
