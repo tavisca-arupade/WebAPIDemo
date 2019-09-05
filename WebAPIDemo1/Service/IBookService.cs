@@ -12,6 +12,6 @@ namespace WebAPIDemo1.Service
         Book GetBookById(int id);
         void AddBook(Book book);
         bool UpdateBook(int id, Book book);
-        void DeleteBook(int id);
+        bool DeleteBook(int id);
     }
 }

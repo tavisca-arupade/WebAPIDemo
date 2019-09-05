@@ -22,12 +22,17 @@ namespace WebAPIDemo1.Model
 
         public bool UpdateBook(int id, Book book)
         {
+            if (id < 0)
+                return false;
             return _books.UpdateBook(id, book);
         }
 
-        public void DeleteBook(int id)
+        public bool DeleteBook(int id)
         {
+            if (id < 0)
+                return false;
             _books.DeleteBook(id);
+            return true;
         }
 
         public Book GetBookById(int id)

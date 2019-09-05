@@ -57,5 +57,20 @@ namespace WebAPITestProject
             bookService.DeleteBook(35465);
             Assert.Null(bookService.GetBookById(35465));
         }
+
+        [Fact]
+        public void Test_when_id_is_negative_while_updating_should_return_invalid()
+        {
+            BookService bookService = new BookService();
+            Book book = new Book { bookName = "Elegy", authorName = "Amanda Hocking", isbnNumber = 35465, price = 200.0 };
+            Assert.False(bookService.UpdateBook(-9,book));
+        }
+
+        [Fact]
+        public void Test_when_id_is_negative_while_deleting_should_return_invalid()
+        {
+            BookService bookService = new BookService();
+            Assert.False(bookService.DeleteBook(-9));
+        }
     }
 }
