@@ -31,7 +31,7 @@ namespace WebAPIDemo1.Controllers
 
         // GET: api/Book/5
         [HttpGet("{id}", Name = "Get")]
-        public IEnumerable<Book> Get(int id)
+        public Book Get(int id)
         {
             return _bookService.GetBookById(id);
         }

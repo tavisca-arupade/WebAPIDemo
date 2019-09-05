@@ -38,9 +38,18 @@ namespace WebAPIDemo1.Database
            
         }
 
-        public IEnumerable<Book> GetBookById(int id)
+        public Book GetBookById(int id)
         {
-            return _bookList.Where(n => n.isbnNumber == id);
+            try
+            {
+                Book book = _bookList.Where(n => n.isbnNumber == id).First();
+                return book;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            
         }
 
         public void DeleteBook(int id)

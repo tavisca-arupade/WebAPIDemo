@@ -30,7 +30,7 @@ namespace WebAPIDemo1.Model
             _books.DeleteBook(id);
         }
 
-        public IEnumerable<Book> GetBookById(int id)
+        public Book GetBookById(int id)
         {
             return _books.GetBookById(id);
         }
