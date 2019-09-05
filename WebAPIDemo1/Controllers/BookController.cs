@@ -31,16 +31,26 @@ namespace WebAPIDemo1.Controllers
 
         // GET: api/Book/5
         [HttpGet("{id}", Name = "Get")]
-        public Book Get(int id)
+        public ActionResult<Book> Get(int id)
         {
-            return _bookService.GetBookById(id);
+            var book = _bookService.GetBookById(id);
+            if (book != null)
+            {
+                return Ok(book);
+            }
+
+            return NotFound("ERROR!!! Book Not Found");
         }
 
         // POST: api/Book
         [HttpPost]
-        public void Post([FromBody] Book value)
+        public ActionResult<Book> Post([FromBody] Book value)
         {
-            _bookService.AddBook(value);
+            if(_bookService.AddBook(value))
+            {
+                return Ok(_bookService.GetBookById(value.isbnNumber));
+            }
+            return NotFound("ERROR!!! Enter valid values of book");
         }
 
         // PUT: api/Book/5
@@ -51,16 +61,20 @@ namespace WebAPIDemo1.Controllers
             //bookList[index] = value;
 
             if (_bookService.UpdateBook(id, value))
-                return Ok();
-            return NotFound();
+                return Ok(_bookService.GetBookById(id));
+            return NotFound("ERROR!!! ID must be Positive or Book Not Found");
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public ActionResult Delete(int id)
         {
             //bookList.Remove(bookList.Where(n => n.isbnNumber == id).Single());
-            _bookService.DeleteBook(id);
+            if(_bookService.DeleteBook(id))
+            {
+                return Ok();
+            }
+            return NotFound("ERROR!!! ID must be Positive or Book Not Found");
         }
     }
 }
