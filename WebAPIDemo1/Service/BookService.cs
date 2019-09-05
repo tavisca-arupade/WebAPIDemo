@@ -31,8 +31,7 @@ namespace WebAPIDemo1.Model
         {
             if (id < 0)
                 return false;
-            _books.DeleteBook(id);
-            return true;
+            return _books.DeleteBook(id);
         }
 
         public Book GetBookById(int id)

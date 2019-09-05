@@ -72,5 +72,20 @@ namespace WebAPITestProject
             BookService bookService = new BookService();
             Assert.False(bookService.DeleteBook(-9));
         }
+
+        [Fact]
+        public void Test_when_updating_book_not_present_should_return_false()
+        {
+            BookService bookService = new BookService();
+            Book book = new Book { bookName = "Wake", authorName = "Amanda Hocking", isbnNumber = 12345, price = 200.0 };
+            Assert.False(bookService.UpdateBook(00000, book));
+        }
+
+        [Fact]
+        public void Test_when_deleting_book_not_present_should_return_false()
+        {
+            BookService bookService = new BookService();
+            Assert.False(bookService.DeleteBook(00000));
+        }
     }
 }

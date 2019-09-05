@@ -31,7 +31,7 @@ namespace WebAPIDemo1.Database
                 _bookList[_bookList.IndexOf(_bookList.Where(n => n.isbnNumber == id).First())] = book;
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return false;
             }
@@ -52,9 +52,18 @@ namespace WebAPIDemo1.Database
             
         }
 
-        public void DeleteBook(int id)
+        public bool DeleteBook(int id)
         {
-            _bookList.Remove(_bookList.Where(n => n.isbnNumber == id).First());
+            try
+            {
+                _bookList.Remove(_bookList.Where(n => n.isbnNumber == id).First());
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+            
         }
     }
 }
