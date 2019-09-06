@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebAPIDemo1.Model;
 using System.Web;
+using WebAPIDemo1.Service;
 
 namespace WebAPIDemo1.Database
 {
@@ -20,21 +21,21 @@ namespace WebAPIDemo1.Database
             return _bookList;
         }
 
-        public string AddBook(Book book)
+        public BookResponseModel AddBook(Book book)
         {
             try
             {
                 if (_bookList.Contains(_bookList.Where(b => b.ISBNNumber == book.ISBNNumber).First()))
-                    return "ISBN Number taken";
+                    return new BookResponseModel { BookData = null, ErrorData = Newtonsoft.Json.JsonConvert.SerializeObject(new Error { StatusCode = 400, ErrorMessages = "ISBN Number taken" }) };
 
             }
             catch (Exception)
             {
 
                 _bookList.Add(book);
-                return Newtonsoft.Json.JsonConvert.SerializeObject(GetBookById(book.ISBNNumber));
+                return new BookResponseModel { BookData = Newtonsoft.Json.JsonConvert.SerializeObject(GetBookById(book.ISBNNumber)), ErrorData = null };
             }
-            return Newtonsoft.Json.JsonConvert.SerializeObject(GetBookById(book.ISBNNumber));
+            return new BookResponseModel { BookData = Newtonsoft.Json.JsonConvert.SerializeObject(GetBookById(book.ISBNNumber)), ErrorData = null }; 
 
         }
 

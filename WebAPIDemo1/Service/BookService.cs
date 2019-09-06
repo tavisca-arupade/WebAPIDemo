@@ -11,37 +11,45 @@ namespace WebAPIDemo1.Model
     {
         private BookDatabase _books = new BookDatabase();
         Validation validation = new Validation();
+        BookResponseModel Response = new BookResponseModel();
 
         public IEnumerable<Book> GetBooks()
         {
            return _books.GetBooks();
         }
-        public string AddBook(Book book)
+        public BookResponseModel AddBook(Book book)
         {
-            List<string> errorMessages = new List<string>();
+            List<Error> errorMessages = new List<Error>();
             if (!validation.IsNameValid(book.Name))
             {
-               errorMessages.Add("ERROR!!! Enter Valid Book Name");
+               errorMessages.Add(new Error { StatusCode = 400,ErrorMessages = "ERROR!!! Enter Valid Book Name" });
             }
 
             if(!validation.IsAuthorNameValid(book.AuthorName))
             {
-                errorMessages.Add("ERROR!!! Enter Valid Author Name");
+                errorMessages.Add(new Error { StatusCode = 400, ErrorMessages = "ERROR!!! Enter Valid Author Name" });
             }
 
             if(validation.IsInputNegative(book.ISBNNumber))
             {
-                errorMessages.Add("ERROR!!! Enter positive ISBN Number");
+                errorMessages.Add(new Error { StatusCode = 400, ErrorMessages = "ERROR!!! Enter positive ISBN Number" });
             }
             
             if(!validation.IsPriceValid(book.Price))
             {
-                errorMessages.Add("ERROR!!! Enter positive value for Price");
+                errorMessages.Add(new Error { StatusCode = 400, ErrorMessages = "ERROR!!! Enter positive value for Price" });
             }
 
             if (errorMessages.Count > 0)
-                return string.Join(",", errorMessages.ToArray());
-            return _books.AddBook(book);
+            {
+                Response.ErrorData = Newtonsoft.Json.JsonConvert.SerializeObject(errorMessages);
+            }
+            else
+            {
+                Response = _books.AddBook(book);
+            }
+
+            return Response;
         }
 
         public bool UpdateBook(int id, Book book)

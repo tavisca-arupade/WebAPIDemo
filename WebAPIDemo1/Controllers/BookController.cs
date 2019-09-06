@@ -46,7 +46,10 @@ namespace WebAPIDemo1.Controllers
         [HttpPost]
         public ActionResult<Book> Post([FromBody] Book value)
         {
-                return Ok(_bookService.AddBook(value));
+            var response = _bookService.AddBook(value);
+            if (response.ErrorData == null)
+                return Ok(response);
+            return NotFound(response);
         }
 
         // PUT: api/Book/5
