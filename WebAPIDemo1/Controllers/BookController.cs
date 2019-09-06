@@ -44,12 +44,12 @@ namespace WebAPIDemo1.Controllers
 
         // POST: api/Book
         [HttpPost]
-        public ActionResult<Book> Post([FromBody] Book value)
+        public ActionResult<BookResponseModel> Post([FromBody] Book value)
         {
             var response = _bookService.AddBook(value);
             if (response.ErrorData == null)
                 return Ok(response);
-            return NotFound(response);
+            return BadRequest(response);
         }
 
         // PUT: api/Book/5
@@ -61,7 +61,7 @@ namespace WebAPIDemo1.Controllers
 
             if (_bookService.UpdateBook(id, value))
                 return Ok(_bookService.GetBookById(id));
-            return NotFound("ERROR!!! ID must be Positive or Book Not Found");
+            return BadRequest("ERROR!!! ID must be Positive or Book Not Found");
         }
 
         // DELETE: api/ApiWithActions/5
@@ -73,7 +73,7 @@ namespace WebAPIDemo1.Controllers
             {
                 return Ok();
             }
-            return NotFound("ERROR!!! ID must be Positive or Book Not Found");
+            return BadRequest("ERROR!!! ID must be Positive or Book Not Found");
         }
     }
 }

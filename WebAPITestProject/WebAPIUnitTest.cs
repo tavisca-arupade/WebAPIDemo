@@ -38,7 +38,7 @@ namespace WebAPITestProject
             BookService bookService = new BookService();
             Book book = new Book { Name = "Wake", AuthorName = "Amanda Hocking", ISBNNumber = 34590, Price = 200.0 };
             var bookToString = Newtonsoft.Json.JsonConvert.SerializeObject(book);
-            Assert.Equal(Newtonsoft.Json.JsonConvert.SerializeObject(new BookResponseModel { BookData=bookToString,ErrorData=null}), Newtonsoft.Json.JsonConvert.SerializeObject(bookService.AddBook(book)));
+            Assert.Equal(Newtonsoft.Json.JsonConvert.SerializeObject(new BookResponseModel { BookData=book,ErrorData=null}), Newtonsoft.Json.JsonConvert.SerializeObject(bookService.AddBook(book)));
         }
 
         [Fact]
@@ -108,7 +108,7 @@ namespace WebAPITestProject
             };
             
             var errorToString = Newtonsoft.Json.JsonConvert.SerializeObject(errorList);         
-            Assert.Equal(Newtonsoft.Json.JsonConvert.SerializeObject(new BookResponseModel { BookData = null, ErrorData = errorToString }), Newtonsoft.Json.JsonConvert.SerializeObject(bookService.AddBook(book)));
+            Assert.Equal(Newtonsoft.Json.JsonConvert.SerializeObject(new BookResponseModel { BookData = null, ErrorData = errorList }), Newtonsoft.Json.JsonConvert.SerializeObject(bookService.AddBook(book)));
             
         }
 
@@ -126,7 +126,7 @@ namespace WebAPITestProject
             };
 
             var errorToString = Newtonsoft.Json.JsonConvert.SerializeObject(errorList);
-            Assert.Equal(Newtonsoft.Json.JsonConvert.SerializeObject(new BookResponseModel { BookData = null, ErrorData = errorToString }), Newtonsoft.Json.JsonConvert.SerializeObject(bookService.AddBook(book)));
+            Assert.Equal(Newtonsoft.Json.JsonConvert.SerializeObject(new BookResponseModel { BookData = null, ErrorData = errorList }), Newtonsoft.Json.JsonConvert.SerializeObject(bookService.AddBook(book)));
 
         }
 
@@ -138,7 +138,7 @@ namespace WebAPITestProject
             Book book = new Book { Name = "Wake", AuthorName = "Amanda Hocking", ISBNNumber = 12345, Price = 200.0 };
             Error error = new Error { StatusCode = 400, ErrorMessages = "ISBN Number taken" };
             var errorToString = Newtonsoft.Json.JsonConvert.SerializeObject(error);
-            Assert.Equal(Newtonsoft.Json.JsonConvert.SerializeObject(new BookResponseModel { BookData = null, ErrorData = errorToString }), Newtonsoft.Json.JsonConvert.SerializeObject(bookService.AddBook(book)));
+            Assert.Equal(Newtonsoft.Json.JsonConvert.SerializeObject(new BookResponseModel { BookData = null, ErrorData = new List<Error> { error } }), Newtonsoft.Json.JsonConvert.SerializeObject(bookService.AddBook(book)));
         }
     }
 }

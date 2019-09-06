@@ -26,16 +26,16 @@ namespace WebAPIDemo1.Database
             try
             {
                 if (_bookList.Contains(_bookList.Where(b => b.ISBNNumber == book.ISBNNumber).First()))
-                    return new BookResponseModel { BookData = null, ErrorData = Newtonsoft.Json.JsonConvert.SerializeObject(new Error { StatusCode = 400, ErrorMessages = "ISBN Number taken" }) };
+                    return new BookResponseModel { BookData = null, ErrorData = new List<Error> { new Error { StatusCode = 400, ErrorMessages = "ISBN Number taken" } } };
 
             }
             catch (Exception)
             {
 
                 _bookList.Add(book);
-                return new BookResponseModel { BookData = Newtonsoft.Json.JsonConvert.SerializeObject(GetBookById(book.ISBNNumber)), ErrorData = null };
+                return new BookResponseModel { BookData = GetBookById(book.ISBNNumber), ErrorData = null };
             }
-            return new BookResponseModel { BookData = Newtonsoft.Json.JsonConvert.SerializeObject(GetBookById(book.ISBNNumber)), ErrorData = null }; 
+            return new BookResponseModel { BookData = GetBookById(book.ISBNNumber), ErrorData = null }; 
 
         }
 

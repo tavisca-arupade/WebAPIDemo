@@ -8,7 +8,7 @@ namespace WebAPIDemo1.Model
 {
     public class BookResponseModel
     {
-        public string BookData { get; set; }
-        public string ErrorData { get; set; }
+        public Book BookData { get; set; }
+        public List<Error> ErrorData { get; set; }
     }
 }

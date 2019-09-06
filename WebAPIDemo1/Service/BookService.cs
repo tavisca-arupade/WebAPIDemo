@@ -42,7 +42,7 @@ namespace WebAPIDemo1.Model
 
             if (errorMessages.Count > 0)
             {
-                Response.ErrorData = Newtonsoft.Json.JsonConvert.SerializeObject(errorMessages);
+                Response.ErrorData = errorMessages;
             }
             else
             {
