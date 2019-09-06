@@ -1,0 +1,14 @@
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPIDemo1\bin\Debug\netcoreapp2.2\WebAPIDemo1.deps.json
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPIDemo1\bin\Debug\netcoreapp2.2\WebAPIDemo1.runtimeconfig.json
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPIDemo1\bin\Debug\netcoreapp2.2\WebAPIDemo1.runtimeconfig.dev.json
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPIDemo1\bin\Debug\netcoreapp2.2\WebAPIDemo1.dll
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPIDemo1\bin\Debug\netcoreapp2.2\WebAPIDemo1.pdb
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPIDemo1\obj\Debug\netcoreapp2.2\WebAPIDemo1.csprojAssemblyReference.cache
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPIDemo1\obj\Debug\netcoreapp2.2\WebAPIDemo1.csproj.CoreCompileInputs.cache
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPIDemo1\obj\Debug\netcoreapp2.2\WebAPIDemo1.RazorAssemblyInfo.cache
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPIDemo1\obj\Debug\netcoreapp2.2\WebAPIDemo1.RazorAssemblyInfo.cs
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPIDemo1\obj\Debug\netcoreapp2.2\WebAPIDemo1.AssemblyInfoInputs.cache
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPIDemo1\obj\Debug\netcoreapp2.2\WebAPIDemo1.AssemblyInfo.cs
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPIDemo1\obj\Debug\netcoreapp2.2\WebAPIDemo1.RazorTargetAssemblyInfo.cache
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPIDemo1\obj\Debug\netcoreapp2.2\WebAPIDemo1.dll
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPIDemo1\obj\Debug\netcoreapp2.2\WebAPIDemo1.pdb
