@@ -18,25 +18,29 @@ namespace WebAPIDemo1.Model
         }
         public string AddBook(Book book)
         {
+            List<string> errorMessages = new List<string>();
             if (!validation.IsBookNameValid(book.bookName))
             {
-               return "ERROR!!! Enter Valid Book Name";
+               errorMessages.Add("ERROR!!! Enter Valid Book Name");
             }
 
-            else if(!validation.IsAuthorNameValid(book.authorName))
+            if(!validation.IsAuthorNameValid(book.authorName))
             {
-                return "ERROR!!! Enter Valid Author Name";
+                errorMessages.Add("ERROR!!! Enter Valid Author Name");
             }
 
-            else if(validation.IsInputNegative(book.isbnNumber))
+            if(validation.IsInputNegative(book.isbnNumber))
             {
-                return "ERROR!!! Enter positive ISBN Number";
+                errorMessages.Add("ERROR!!! Enter positive ISBN Number");
             }
             
-            else if(!validation.IsPriceValid(book.price))
+            if(!validation.IsPriceValid(book.price))
             {
-                return "ERROR!!! Enter positive value for price";
+                errorMessages.Add("ERROR!!! Enter positive value for price");
             }
+
+            if (errorMessages.Count > 0)
+                return string.Join(",", errorMessages.ToArray());
             return _books.AddBook(book);
         }
 

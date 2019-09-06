@@ -94,6 +94,7 @@ namespace WebAPITestProject
         [InlineData("ERROR!!! Enter positive ISBN Number","Wake", "Amanda Hocking", -12345, 200.0)]
         [InlineData("ERROR!!! Enter Valid Book Name","", "Amanda Hocking", 12345, 200.0)]
         [InlineData("ERROR!!! Enter Valid Author Name","Wake", "Amanda 123", 12345, 200.0)]
+        [InlineData("ERROR!!! Enter Valid Author Name,ERROR!!! Enter positive ISBN Number,ERROR!!! Enter positive value for price", "Wake", "Amanda 123", -12345, -200.0)]
         public void Test_when_adding_newBook_contains_invalid_data_should_return_false(string result,string bookName, string authorName,int isbnNumber,float price)
         {
             BookService bookService = new BookService();
