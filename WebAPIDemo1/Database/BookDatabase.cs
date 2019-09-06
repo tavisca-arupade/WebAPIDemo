@@ -22,15 +22,26 @@ namespace WebAPIDemo1.Database
 
         public string AddBook(Book book)
         {
-            _bookList.Add(book); 
+            try
+            {
+                if (_bookList.Contains(_bookList.Where(b => b.isbnNumber == book.isbnNumber).First()))
+                    return "ISBN Number taken";
+
+            }
+            catch (Exception)
+            {
+
+                _bookList.Add(book);
+                return Newtonsoft.Json.JsonConvert.SerializeObject(GetBookById(book.isbnNumber));
+            }
             return Newtonsoft.Json.JsonConvert.SerializeObject(GetBookById(book.isbnNumber));
+
         }
 
         public bool UpdateBook(int id,Book book)
         {
             try
             {
-                //int index = ;
                 _bookList[_bookList.IndexOf(_bookList.Where(n => n.isbnNumber == id).First())] = book;
                 return true;
             }

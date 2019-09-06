@@ -35,17 +35,16 @@ namespace WebAPITestProject
         public void Test_whether_book_added_to_database()
         {
             BookService bookService = new BookService();
-            Book book = new Book { bookName = "Wake", authorName = "Amanda Hocking", isbnNumber = 67890, price = 200.0 };
-            Assert.Equal(book.ToString(),bookService.AddBook(book));
-            //Assert.Equal(book.ToString(), bookService.GetBookById(67890).ToString());
+            Book book = new Book { bookName = "Wake", authorName = "Amanda Hocking", isbnNumber = 34590, price = 200.0 };
+            Assert.Equal(Newtonsoft.Json.JsonConvert.SerializeObject(book),bookService.AddBook(book));
         }
 
         [Fact]
         public void Test_whether_book_data_updated_in_database()
         {
             BookService bookService = new BookService();
-            Book book = new Book { bookName = "Wake", authorName = "Amanda Hocking", isbnNumber = 12345, price = 200.0 };
-            bookService.UpdateBook(12345,book);
+            Book book = new Book { bookName = "Tide", authorName = "Amanda", isbnNumber = 12345, price = 200.0 };
+            bookService.UpdateBook(12345, book);
             Assert.Equal(book.ToString(), bookService.GetBookById(12345).ToString());
         }
 
@@ -53,8 +52,8 @@ namespace WebAPITestProject
         public void Test_whether_book_deleted_from_database()
         {
             BookService bookService = new BookService();
-            Book book = new Book { bookName = "Elegy", authorName = "Amanda Hocking", isbnNumber = 35465, price = 200.0 };
-            bookService.AddBook(book);
+            Book book = new Book { bookName = "Elegy", authorName = "Amanda Hocking", isbnNumber = 56709, price = 200.0 };
+            var addedBook = bookService.AddBook(book);
             bookService.DeleteBook(35465);
             Assert.Null(bookService.GetBookById(35465));
         }
@@ -78,7 +77,7 @@ namespace WebAPITestProject
         public void Test_when_updating_book_not_present_should_return_false()
         {
             BookService bookService = new BookService();
-            Book book = new Book { bookName = "Wake", authorName = "Amanda Hocking", isbnNumber = 12345, price = 200.0 };
+            Book book = new Book { bookName = "Wake", authorName = "Amanda Hocking", isbnNumber = 67890, price = 200.0 };
             Assert.False(bookService.UpdateBook(00000, book));
         }
 
@@ -100,6 +99,15 @@ namespace WebAPITestProject
             BookService bookService = new BookService();
             Book book = new Book { bookName = bookName, authorName = authorName, isbnNumber = isbnNumber, price = price };
             Assert.Equal(result,bookService.AddBook(book));
+        }
+
+        [Fact]
+
+        public void Test_when_user_enters_duplicate_isbnNumber_returns_error_message()
+        {
+            BookService bookService = new BookService();
+            Book book = new Book { bookName = "Wake", authorName = "Amanda Hocking", isbnNumber = 12345, price = 200.0 };
+            Assert.Equal("ISBN Number taken", bookService.AddBook(book));
         }
     }
 }
