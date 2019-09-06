@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using WebAPIDemo1.Model;
+using System.Web;
 
 namespace WebAPIDemo1.Database
 {
@@ -18,9 +20,10 @@ namespace WebAPIDemo1.Database
             return _bookList;
         }
 
-        public void AddBook(Book book)
+        public string AddBook(Book book)
         {
-            _bookList.Add(book);
+            _bookList.Add(book); 
+            return Newtonsoft.Json.JsonConvert.SerializeObject(GetBookById(book.isbnNumber));
         }
 
         public bool UpdateBook(int id,Book book)

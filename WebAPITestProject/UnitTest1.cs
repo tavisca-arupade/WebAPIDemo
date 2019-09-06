@@ -36,7 +36,7 @@ namespace WebAPITestProject
         {
             BookService bookService = new BookService();
             Book book = new Book { bookName = "Wake", authorName = "Amanda Hocking", isbnNumber = 67890, price = 200.0 };
-            Assert.True(bookService.AddBook(book));
+            Assert.Equal(book.ToString(),bookService.AddBook(book));
             //Assert.Equal(book.ToString(), bookService.GetBookById(67890).ToString());
         }
 
@@ -91,15 +91,15 @@ namespace WebAPITestProject
 
 
         [Theory]
-        [InlineData("Wake", "Amanda Hocking", 12345, -200.0)]
-        [InlineData("Wake", "Amanda Hocking", -12345, 200.0)]
-        [InlineData("", "Amanda Hocking", 12345, 200.0)]
-        [InlineData("Wake", "Amanda 123", 12345, 200.0)]
-        public void Test_when_adding_newBook_contains_invalid_data_should_return_false(string bookName, string authorName,int isbnNumber,float price)
+        [InlineData("ERROR!!! Enter positive value for price","Wake", "Amanda Hocking", 12345, -200.0)]
+        [InlineData("ERROR!!! Enter positive ISBN Number","Wake", "Amanda Hocking", -12345, 200.0)]
+        [InlineData("ERROR!!! Enter Valid Book Name","", "Amanda Hocking", 12345, 200.0)]
+        [InlineData("ERROR!!! Enter Valid Author Name","Wake", "Amanda 123", 12345, 200.0)]
+        public void Test_when_adding_newBook_contains_invalid_data_should_return_false(string result,string bookName, string authorName,int isbnNumber,float price)
         {
             BookService bookService = new BookService();
             Book book = new Book { bookName = bookName, authorName = authorName, isbnNumber = isbnNumber, price = price };
-            Assert.False(bookService.AddBook(book));
+            Assert.Equal(result,bookService.AddBook(book));
         }
     }
 }

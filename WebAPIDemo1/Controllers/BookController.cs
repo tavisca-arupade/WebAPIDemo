@@ -46,11 +46,11 @@ namespace WebAPIDemo1.Controllers
         [HttpPost]
         public ActionResult<Book> Post([FromBody] Book value)
         {
-            if(_bookService.AddBook(value))
-            {
-                return Ok(_bookService.GetBookById(value.isbnNumber));
-            }
-            return NotFound("ERROR!!! Enter valid values of book");
+            //if(_bookService.AddBook(value) != null)
+            //{
+                return Ok(_bookService.AddBook(value));
+            //}
+            //return NotFound("ERROR!!! Enter valid values of book");
         }
 
         // PUT: api/Book/5

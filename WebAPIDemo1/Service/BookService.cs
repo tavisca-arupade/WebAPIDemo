@@ -16,14 +16,28 @@ namespace WebAPIDemo1.Model
         {
            return _books.GetBooks();
         }
-        public bool AddBook(Book book)
+        public string AddBook(Book book)
         {
-            if (validation.IsDataValid(book))
+            if (!validation.IsBookNameValid(book.bookName))
             {
-                _books.AddBook(book);
-                return true;
+               return "ERROR!!! Enter Valid Book Name";
             }
-            return false;
+
+            else if(!validation.IsAuthorNameValid(book.authorName))
+            {
+                return "ERROR!!! Enter Valid Author Name";
+            }
+
+            else if(validation.IsInputNegative(book.isbnNumber))
+            {
+                return "ERROR!!! Enter positive ISBN Number";
+            }
+            
+            else if(!validation.IsPriceValid(book.price))
+            {
+                return "ERROR!!! Enter positive value for price";
+            }
+            return _books.AddBook(book);
         }
 
         public bool UpdateBook(int id, Book book)

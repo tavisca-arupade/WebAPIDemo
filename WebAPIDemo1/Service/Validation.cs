@@ -18,17 +18,17 @@ namespace WebAPIDemo1.Service
             return false;
         }
 
-        private bool IsPriceValid(double price)
+        public bool IsPriceValid(double price)
         {
             return (price > 0) ? true : false;
         }
 
-        private bool IsAuthorNameValid(string authorName)
+        public bool IsAuthorNameValid(string authorName)
         {
            return Regex.IsMatch(authorName, @"^[a-zA-Z\s]+$");
         }
 
-        private bool IsBookNameValid(string bookName)
+        public bool IsBookNameValid(string bookName)
         {
             return !string.IsNullOrEmpty(bookName);
         }
