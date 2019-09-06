@@ -11,8 +11,8 @@ namespace WebAPIDemo1.Database
     public class BookDatabase
     {
         private static List<Book> _bookList = new List<Book> {
-            new Book { bookName = "Tide", authorName = "Amanda Hocking", isbnNumber = 12345, price = 200.0 },
-            new Book { bookName = "Trylle", authorName = "Amanda Hocking", isbnNumber = 13445, price = 200.0 }
+            new Book { Name = "Tide", AuthorName = "Amanda Hocking", ISBNNumber = 12345, Price = 200.0 },
+            new Book { Name = "Trylle", AuthorName = "Amanda Hocking", ISBNNumber = 13445, Price = 200.0 }
         };
 
         public IEnumerable<Book> GetBooks()
@@ -24,7 +24,7 @@ namespace WebAPIDemo1.Database
         {
             try
             {
-                if (_bookList.Contains(_bookList.Where(b => b.isbnNumber == book.isbnNumber).First()))
+                if (_bookList.Contains(_bookList.Where(b => b.ISBNNumber == book.ISBNNumber).First()))
                     return "ISBN Number taken";
 
             }
@@ -32,9 +32,9 @@ namespace WebAPIDemo1.Database
             {
 
                 _bookList.Add(book);
-                return Newtonsoft.Json.JsonConvert.SerializeObject(GetBookById(book.isbnNumber));
+                return Newtonsoft.Json.JsonConvert.SerializeObject(GetBookById(book.ISBNNumber));
             }
-            return Newtonsoft.Json.JsonConvert.SerializeObject(GetBookById(book.isbnNumber));
+            return Newtonsoft.Json.JsonConvert.SerializeObject(GetBookById(book.ISBNNumber));
 
         }
 
@@ -42,7 +42,7 @@ namespace WebAPIDemo1.Database
         {
             try
             {
-                _bookList[_bookList.IndexOf(_bookList.Where(n => n.isbnNumber == id).First())] = book;
+                _bookList[_bookList.IndexOf(_bookList.Where(n => n.ISBNNumber == id).First())] = book;
                 return true;
             }
             catch (Exception)
@@ -56,7 +56,7 @@ namespace WebAPIDemo1.Database
         {
             try
             {
-                Book book = _bookList.Where(n => n.isbnNumber == id).First();
+                Book book = _bookList.Where(n => n.ISBNNumber == id).First();
                 return book;
             }
             catch (Exception)
@@ -70,7 +70,7 @@ namespace WebAPIDemo1.Database
         {
             try
             {
-                _bookList.Remove(_bookList.Where(n => n.isbnNumber == id).First());
+                _bookList.Remove(_bookList.Where(n => n.ISBNNumber == id).First());
                 return true;
             }
             catch (Exception)

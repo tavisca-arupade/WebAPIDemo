@@ -17,8 +17,8 @@ namespace WebAPIDemo1.Controllers
         IBookService _bookService = new BookService();
 
         public static List<Book> bookList = new List<Book> {
-            new Book { bookName = "Tide", authorName = "Amanda Hocking", isbnNumber = 12345, price = 200.0 },
-            new Book { bookName = "Trylle", authorName = "Amanda Hocking", isbnNumber = 13445, price = 200.0 }
+            new Book { Name = "Tide", AuthorName = "Amanda Hocking", ISBNNumber = 12345, Price = 200.0 },
+            new Book { Name = "Trylle", AuthorName = "Amanda Hocking", ISBNNumber = 13445, Price = 200.0 }
         };
 
 
@@ -53,7 +53,7 @@ namespace WebAPIDemo1.Controllers
         [HttpPut("{id}")]
         public ActionResult Put(int id, [FromBody] Book value)
         {
-            //var index = bookList.IndexOf(bookList.Where(n => n.isbnNumber == id).First());
+            //var index = bookList.IndexOf(bookList.Where(n => n.ISBNNumber == id).First());
             //bookList[index] = value;
 
             if (_bookService.UpdateBook(id, value))
@@ -65,7 +65,7 @@ namespace WebAPIDemo1.Controllers
         [HttpDelete("{id}")]
         public ActionResult Delete(int id)
         {
-            //bookList.Remove(bookList.Where(n => n.isbnNumber == id).Single());
+            //bookList.Remove(bookList.Where(n => n.ISBNNumber == id).Single());
             if(_bookService.DeleteBook(id))
             {
                 return Ok();

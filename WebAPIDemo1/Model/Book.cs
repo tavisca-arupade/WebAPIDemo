@@ -7,10 +7,10 @@ namespace WebAPIDemo1.Model
 {
     public class Book
     {
-        public string bookName { get; set; }
-        public string authorName { get; set; }
-        public int isbnNumber { get; set; }
-        public double price { get; set; }
+        public string Name { get; set; }
+        public string AuthorName { get; set; }
+        public int ISBNNumber { get; set; }
+        public double Price { get; set; }
 
     }
 }

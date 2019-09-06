@@ -11,10 +11,10 @@ namespace WebAPIDemo1.Service
     {
         public bool IsInputNegative(int id) => (id < 0) ? true : false;
 
-        public bool IsPriceValid(double price) => (price > 0) ? true : false;
+        public bool IsPriceValid(double Price) => (Price > 0) ? true : false;
 
-        public bool IsAuthorNameValid(string authorName) => Regex.IsMatch(authorName, @"^[a-zA-Z\s]+$");
+        public bool IsAuthorNameValid(string AuthorName) => Regex.IsMatch(AuthorName, @"^[a-zA-Z\s]+$");
 
-        public bool IsBookNameValid(string bookName) => !string.IsNullOrEmpty(bookName);
+        public bool IsNameValid(string Name) => !string.IsNullOrEmpty(Name);
     }
 }
