@@ -16,6 +16,7 @@ namespace WebAPIDemo1.Database
             new Book { Name = "Trylle", AuthorName = "Amanda Hocking", ISBNNumber = 13445, Price = 200.0 }
         };
 
+
         public IEnumerable<Book> GetBooks()
         {
             return _bookList;
@@ -67,16 +68,17 @@ namespace WebAPIDemo1.Database
             
         }
 
-        public bool DeleteBook(int id)
+        public BookResponseModel DeleteBook(int id)
         {
             try
             {
                 _bookList.Remove(_bookList.Where(n => n.ISBNNumber == id).First());
-                return true;
+
+                return new BookResponseModel { };
             }
             catch (Exception)
             {
-                return false;
+                return new BookResponseModel { };
             }
             
         }

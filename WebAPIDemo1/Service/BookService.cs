@@ -59,11 +59,13 @@ namespace WebAPIDemo1.Model
             return _books.UpdateBook(id, book);
         }
 
-        public bool DeleteBook(int id)
+        public BookResponseModel DeleteBook(int id)
         {
             if (validation.IsInputNegative(id))
-                return false;
-            return _books.DeleteBook(id);
+                Response.ErrorData = new List<Error> { new Error { StatusCode=400,ErrorMessages="ERROR!!! ID must be Positive"} };
+            else
+                Response = _books.DeleteBook(id);
+            return Response;
         }
 
         public Book GetBookById(int id)
