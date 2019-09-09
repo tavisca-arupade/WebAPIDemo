@@ -9,9 +9,9 @@ namespace WebAPIDemo1.Service
     interface IBookService
     {
         IEnumerable<Book> GetBooks();
-        Book GetBookById(int id);
+        BookResponseModel GetBookById(int id);
         BookResponseModel AddBook(Book book);
-        bool UpdateBook(int id, Book book);
+        BookResponseModel UpdateBook(int id, Book book);
         BookResponseModel DeleteBook(int id);
     }
 }

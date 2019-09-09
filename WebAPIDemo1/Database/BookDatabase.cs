@@ -34,36 +34,37 @@ namespace WebAPIDemo1.Database
             {
 
                 _bookList.Add(book);
-                return new BookResponseModel { BookData = GetBookById(book.ISBNNumber), ErrorData = null };
+                return new BookResponseModel { BookData = GetBookById(book.ISBNNumber).BookData, ErrorData = null };
             }
-            return new BookResponseModel { BookData = GetBookById(book.ISBNNumber), ErrorData = null }; 
+            return new BookResponseModel { BookData = GetBookById(book.ISBNNumber).BookData, ErrorData = null }; 
 
         }
 
-        public bool UpdateBook(int id,Book book)
+        public BookResponseModel UpdateBook(int id,Book book)
         {
             try
             {
-                _bookList[_bookList.IndexOf(_bookList.Where(n => n.ISBNNumber == id).First())] = book;
-                return true;
+                int index = _bookList.IndexOf(_bookList.Where(n => n.ISBNNumber == id).First());
+                _bookList[index] = book;
+                return new BookResponseModel { BookData = _bookList[index] , ErrorData = null};
             }
             catch (Exception)
             {
-                return false;
+                return new BookResponseModel { ErrorData = new List<Error> { new Error { StatusCode = 400, ErrorMessages = "ERROR!!! Book Not Found" } } };
             }
            
         }
 
-        public Book GetBookById(int id)
+        public BookResponseModel GetBookById(int id)
         {
             try
             {
                 Book book = _bookList.Where(n => n.ISBNNumber == id).First();
-                return book;
+                return new BookResponseModel { BookData = book, ErrorData = null };
             }
             catch (Exception)
             {
-                return null;
+                return new BookResponseModel { ErrorData = new List<Error> { new Error { StatusCode = 400, ErrorMessages = "ERROR!!! Book Not Found" } } };
             }
             
         }
@@ -78,7 +79,7 @@ namespace WebAPIDemo1.Database
             }
             catch (Exception)
             {
-                return new BookResponseModel { };
+                return new BookResponseModel {ErrorData= new List<Error> { new Error { StatusCode = 400, ErrorMessages = "ERROR!!! Book Not Found" } } };
             }
             
         }

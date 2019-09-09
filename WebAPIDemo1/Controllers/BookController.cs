@@ -31,15 +31,15 @@ namespace WebAPIDemo1.Controllers
 
         // GET: api/Book/5
         [HttpGet("{id}", Name = "Get")]
-        public ActionResult<Book> Get(int id)
+        public ActionResult Get(int id)
         {
-            var book = _bookService.GetBookById(id);
-            if (book != null)
+            var response = _bookService.GetBookById(id);
+            if (response == null)
             {
-                return Ok(book);
+                return Ok(response);
             }
 
-            return NotFound("ERROR!!! Book Not Found");
+            return BadRequest(response);
         }
 
         // POST: api/Book
@@ -59,9 +59,11 @@ namespace WebAPIDemo1.Controllers
             //var index = bookList.IndexOf(bookList.Where(n => n.ISBNNumber == id).First());
             //bookList[index] = value;
 
-            if (_bookService.UpdateBook(id, value))
-                return Ok(_bookService.GetBookById(id));
-            return BadRequest("ERROR!!! ID must be Positive or Book Not Found");
+            var response = _bookService.UpdateBook(id, value);
+
+            if (response.ErrorData == null)
+                return Ok(response);
+            return BadRequest(response);
         }
 
         // DELETE: api/ApiWithActions/5
@@ -69,11 +71,13 @@ namespace WebAPIDemo1.Controllers
         public ActionResult Delete(int id)
         {
             //bookList.Remove(bookList.Where(n => n.ISBNNumber == id).Single());
-            if(_bookService.DeleteBook(id))
+            var response = _bookService.DeleteBook(id);
+            if (response.ErrorData == null)
             {
-                return Ok();
+                return Ok(response);
             }
-            return BadRequest("ERROR!!! ID must be Positive or Book Not Found");
+          
+            return BadRequest(response);
         }
     }
 }

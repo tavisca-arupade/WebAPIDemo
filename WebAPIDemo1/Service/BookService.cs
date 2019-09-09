@@ -52,11 +52,13 @@ namespace WebAPIDemo1.Model
             return Response;
         }
 
-        public bool UpdateBook(int id, Book book)
+        public BookResponseModel UpdateBook(int id, Book book)
         {
             if (validation.IsInputNegative(id))
-                return false;
-            return _books.UpdateBook(id, book);
+                Response.ErrorData = new List<Error> { new Error { StatusCode = 400, ErrorMessages = "ERROR!!! ID must be Positive" } };
+            else
+                Response = _books.UpdateBook(id, book);
+            return Response;
         }
 
         public BookResponseModel DeleteBook(int id)
@@ -68,11 +70,13 @@ namespace WebAPIDemo1.Model
             return Response;
         }
 
-        public Book GetBookById(int id)
+        public BookResponseModel GetBookById(int id)
         {
             if (validation.IsInputNegative(id))
-                return null;
-            return _books.GetBookById(id);
+                Response.ErrorData = new List<Error> { new Error { StatusCode = 400, ErrorMessages = "ERROR!!! ID must be Positive" } };
+            else 
+                Response = _books.GetBookById(id);
+            return Response;
         }
     }
 }
