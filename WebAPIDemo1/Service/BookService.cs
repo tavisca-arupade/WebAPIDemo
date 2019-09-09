@@ -12,6 +12,7 @@ namespace WebAPIDemo1.Model
         private BookDatabase _books = new BookDatabase();
         Validation validation = new Validation();
         BookResponseModel Response = new BookResponseModel();
+        ErrorData errorData = new ErrorData();
 
         public IEnumerable<Book> GetBooks()
         {
@@ -22,22 +23,22 @@ namespace WebAPIDemo1.Model
             List<Error> errorMessages = new List<Error>();
             if (!validation.IsNameValid(book.Name))
             {
-               errorMessages.Add(new Error { StatusCode = 400,ErrorMessages = "ERROR!!! Enter Valid Book Name" });
+               errorMessages.Add(errorData.InvalidBookNameError);
             }
 
             if(!validation.IsAuthorNameValid(book.AuthorName))
             {
-                errorMessages.Add(new Error { StatusCode = 400, ErrorMessages = "ERROR!!! Enter Valid Author Name" });
+                errorMessages.Add(errorData.InvalidAuthorNameError);
             }
 
             if(validation.IsInputNegative(book.ISBNNumber))
             {
-                errorMessages.Add(new Error { StatusCode = 400, ErrorMessages = "ERROR!!! Enter positive ISBN Number" });
+                errorMessages.Add(errorData.IDNegativeError);
             }
             
             if(!validation.IsPriceValid(book.Price))
             {
-                errorMessages.Add(new Error { StatusCode = 400, ErrorMessages = "ERROR!!! Enter positive value for Price" });
+                errorMessages.Add(errorData.NegativePriceError);
             }
 
             if (errorMessages.Count > 0)
@@ -55,7 +56,7 @@ namespace WebAPIDemo1.Model
         public BookResponseModel UpdateBook(int id, Book book)
         {
             if (validation.IsInputNegative(id))
-                Response.ErrorData = new List<Error> { new Error { StatusCode = 400, ErrorMessages = "ERROR!!! ID must be Positive" } };
+                Response.ErrorData = new List<Error> { errorData.IDNegativeError };
             else
                 Response = _books.UpdateBook(id, book);
             return Response;
@@ -64,7 +65,7 @@ namespace WebAPIDemo1.Model
         public BookResponseModel DeleteBook(int id)
         {
             if (validation.IsInputNegative(id))
-                Response.ErrorData = new List<Error> { new Error { StatusCode=400,ErrorMessages="ERROR!!! ID must be Positive"} };
+                Response.ErrorData = new List<Error> { errorData.IDNegativeError };
             else
                 Response = _books.DeleteBook(id);
             return Response;
@@ -73,7 +74,7 @@ namespace WebAPIDemo1.Model
         public BookResponseModel GetBookById(int id)
         {
             if (validation.IsInputNegative(id))
-                Response.ErrorData = new List<Error> { new Error { StatusCode = 400, ErrorMessages = "ERROR!!! ID must be Positive" } };
+                Response.ErrorData = new List<Error> { errorData.IDNegativeError };
             else 
                 Response = _books.GetBookById(id);
             return Response;

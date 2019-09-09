@@ -34,7 +34,7 @@ namespace WebAPIDemo1.Controllers
         public ActionResult Get(int id)
         {
             var response = _bookService.GetBookById(id);
-            if (response == null)
+            if (response.ErrorData == null)
             {
                 return Ok(response);
             }
@@ -44,7 +44,7 @@ namespace WebAPIDemo1.Controllers
 
         // POST: api/Book
         [HttpPost]
-        public ActionResult<BookResponseModel> Post([FromBody] Book value)
+        public ActionResult Post([FromBody] Book value)
         {
             var response = _bookService.AddBook(value);
             if (response.ErrorData == null)

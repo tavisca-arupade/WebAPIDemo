@@ -16,6 +16,8 @@ namespace WebAPIDemo1.Database
             new Book { Name = "Trylle", AuthorName = "Amanda Hocking", ISBNNumber = 13445, Price = 200.0 }
         };
 
+        ErrorData errorData = new ErrorData();
+
 
         public IEnumerable<Book> GetBooks()
         {
@@ -27,7 +29,7 @@ namespace WebAPIDemo1.Database
             try
             {
                 if (_bookList.Contains(_bookList.Where(b => b.ISBNNumber == book.ISBNNumber).First()))
-                    return new BookResponseModel { BookData = null, ErrorData = new List<Error> { new Error { StatusCode = 400, ErrorMessages = "ISBN Number taken" } } };
+                    return new BookResponseModel { BookData = null, ErrorData = new List<Error> { errorData.ISBNNumberTakenError } };
 
             }
             catch (Exception)
@@ -50,7 +52,7 @@ namespace WebAPIDemo1.Database
             }
             catch (Exception)
             {
-                return new BookResponseModel { ErrorData = new List<Error> { new Error { StatusCode = 400, ErrorMessages = "ERROR!!! Book Not Found" } } };
+                return new BookResponseModel { ErrorData = new List<Error> { errorData.BookNotFoundError } };
             }
            
         }
@@ -64,7 +66,7 @@ namespace WebAPIDemo1.Database
             }
             catch (Exception)
             {
-                return new BookResponseModel { ErrorData = new List<Error> { new Error { StatusCode = 400, ErrorMessages = "ERROR!!! Book Not Found" } } };
+                return new BookResponseModel { ErrorData = new List<Error> { errorData.BookNotFoundError } };
             }
             
         }
@@ -79,7 +81,7 @@ namespace WebAPIDemo1.Database
             }
             catch (Exception)
             {
-                return new BookResponseModel {ErrorData= new List<Error> { new Error { StatusCode = 400, ErrorMessages = "ERROR!!! Book Not Found" } } };
+                return new BookResponseModel {ErrorData= new List<Error> { errorData.BookNotFoundError } };
             }
             
         }

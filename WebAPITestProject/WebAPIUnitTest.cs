@@ -53,9 +53,10 @@ namespace WebAPITestProject
         public void Test_whether_book_deleted_from_database()
         {
             BookService bookService = new BookService();
+            ErrorData errorData = new ErrorData();
             List<Error> errorList = new List<Error>
             {
-                new Error { StatusCode = 400, ErrorMessages = "ERROR!!! Book Not Found" }
+                errorData.BookNotFoundError
             };
             Book book = new Book { Name = "Elegy", AuthorName = "Amanda Hocking", ISBNNumber = 56709, Price = 200.0 };
             bookService.AddBook(book);
@@ -67,11 +68,12 @@ namespace WebAPITestProject
         public void Test_when_id_is_negative_while_updating_should_return_invalid()
         {
             BookService bookService = new BookService();
+            ErrorData errorData = new ErrorData();
             List<Error> errorList = new List<Error>
             {
-                new Error { StatusCode = 400, ErrorMessages = "ERROR!!! ID must be Positive" }
+                errorData.IDNegativeError
             };
-            Book book = new Book { Name = "Elegy", AuthorName = "Amanda Hocking", ISBNNumber = 35465, Price = 200.0 };
+            Book book = new Book { Name = "Elegy", AuthorName = "Amanda Hocking", ISBNNumber = 09090, Price = 200.0 };
             Assert.Equal(Newtonsoft.Json.JsonConvert.SerializeObject(new BookResponseModel { BookData = null, ErrorData = errorList }), Newtonsoft.Json.JsonConvert.SerializeObject(bookService.UpdateBook(-9,book)));
         }
 
@@ -79,9 +81,10 @@ namespace WebAPITestProject
         public void Test_when_id_is_negative_while_deleting_should_return_invalid()
         {
             BookService bookService = new BookService();
+            ErrorData errorData = new ErrorData();
             List<Error> errorList = new List<Error>
             {
-                new Error { StatusCode = 400, ErrorMessages = "ERROR!!! ID must be Positive" }
+                errorData.IDNegativeError
             };
             Assert.Equal(Newtonsoft.Json.JsonConvert.SerializeObject(new BookResponseModel { BookData = null, ErrorData = errorList }), Newtonsoft.Json.JsonConvert.SerializeObject(bookService.DeleteBook(-9)));
         }
@@ -90,9 +93,10 @@ namespace WebAPITestProject
         public void Test_when_updating_book_not_present_should_return_false()
         {
             BookService bookService = new BookService();
+            ErrorData errorData = new ErrorData();
             List<Error> errorList = new List<Error>
             {
-                new Error { StatusCode = 400, ErrorMessages = "ERROR!!! Book Not Found" }
+                errorData.BookNotFoundError
             };
             Book book = new Book { Name = "Wake", AuthorName = "Amanda Hocking", ISBNNumber = 67890, Price = 200.0 };
             Assert.Equal(Newtonsoft.Json.JsonConvert.SerializeObject(new BookResponseModel { BookData = null, ErrorData = errorList }), Newtonsoft.Json.JsonConvert.SerializeObject(bookService.UpdateBook(00000, book)));
@@ -102,9 +106,10 @@ namespace WebAPITestProject
         public void Test_when_deleting_book_not_present_should_return_false()
         {
             BookService bookService = new BookService();
+            ErrorData errorData = new ErrorData();
             List<Error> errorList = new List<Error>
             {
-                new Error { StatusCode = 400, ErrorMessages = "ERROR!!! Book Not Found" }
+                errorData.BookNotFoundError
             };
             Assert.Equal(Newtonsoft.Json.JsonConvert.SerializeObject(new BookResponseModel { BookData = null, ErrorData = errorList }), Newtonsoft.Json.JsonConvert.SerializeObject( bookService.DeleteBook(00000)));
         }
@@ -112,7 +117,7 @@ namespace WebAPITestProject
 
         [Theory]
         [InlineData(400, "ERROR!!! Enter positive value for Price", "Wake", "Amanda Hocking", 12345, -200.0)]
-        [InlineData(400,"ERROR!!! Enter positive ISBN Number","Wake", "Amanda Hocking", -12345, 200.0)]
+        [InlineData(400,"ERROR!!! ID must be Positive","Wake", "Amanda Hocking", -12345, 200.0)]
         [InlineData(400,"ERROR!!! Enter Valid Book Name","", "Amanda Hocking", 12345, 200.0)]
         [InlineData(400,"ERROR!!! Enter Valid Author Name","Wake", "Amanda 123", 12345, 200.0)]
         //[InlineData("ERROR!!! Enter Valid Author Name,ERROR!!! Enter positive ISBN Number,ERROR!!! Enter positive value for Price", "Wake", "Amanda 123", -12345, -200.0)]
@@ -137,11 +142,12 @@ namespace WebAPITestProject
             BookService bookService = new BookService();
             
             Book book = new Book { Name = "Wake", AuthorName = "Amanda 123", ISBNNumber = -12345, Price = -200.0 };
-            List <Error> errorList = new List<Error>
+            ErrorData errorData = new ErrorData();
+            List<Error> errorList = new List<Error>
             {
-                new Error { StatusCode = 400, ErrorMessages = "ERROR!!! Enter Valid Author Name" },
-                new Error { StatusCode = 400, ErrorMessages = "ERROR!!! Enter positive ISBN Number" },
-                new Error { StatusCode = 400, ErrorMessages = "ERROR!!! Enter positive value for Price" }
+                errorData.InvalidAuthorNameError,
+                errorData.IDNegativeError,
+                errorData.NegativePriceError
             };
 
             var errorToString = Newtonsoft.Json.JsonConvert.SerializeObject(errorList);
@@ -155,9 +161,9 @@ namespace WebAPITestProject
         {
             BookService bookService = new BookService();
             Book book = new Book { Name = "Wake", AuthorName = "Amanda Hocking", ISBNNumber = 12345, Price = 200.0 };
-            Error error = new Error { StatusCode = 400, ErrorMessages = "ISBN Number taken" };
-            var errorToString = Newtonsoft.Json.JsonConvert.SerializeObject(error);
-            Assert.Equal(Newtonsoft.Json.JsonConvert.SerializeObject(new BookResponseModel { BookData = null, ErrorData = new List<Error> { error } }), Newtonsoft.Json.JsonConvert.SerializeObject(bookService.AddBook(book)));
+            ErrorData errorData = new ErrorData();
+            
+            Assert.Equal(Newtonsoft.Json.JsonConvert.SerializeObject(new BookResponseModel { BookData = null, ErrorData = new List<Error> { errorData.ISBNNumberTakenError } }), Newtonsoft.Json.JsonConvert.SerializeObject(bookService.AddBook(book)));
         }
     }
 }

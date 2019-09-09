@@ -34,6 +34,7 @@ namespace WebAPIDemo1
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                
             }
             else
             {
@@ -44,5 +45,6 @@ namespace WebAPIDemo1
             app.UseHttpsRedirection();
             app.UseMvc();
         }
+
     }
 }
