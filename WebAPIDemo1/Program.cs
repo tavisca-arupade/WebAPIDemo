@@ -19,6 +19,8 @@ namespace WebAPIDemo1
             Log.Logger = new LoggerConfiguration().WriteTo.File("Log/myLog.txt").CreateLogger();
 
             CreateWebHostBuilder(args).Build().Run();
+
+            Log.CloseAndFlush();
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>

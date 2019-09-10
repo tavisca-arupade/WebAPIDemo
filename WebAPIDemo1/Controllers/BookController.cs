@@ -99,9 +99,5 @@ namespace WebAPIDemo1.Controllers
             return BadRequest(response);
         }
 
-        ~BookController()
-        {
-            Log.CloseAndFlush();
-        }
     }
 }

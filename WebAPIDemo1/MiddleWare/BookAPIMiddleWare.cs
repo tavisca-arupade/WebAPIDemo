@@ -18,9 +18,11 @@ namespace WebAPIDemo1.MiddleWare
 
         public async Task InvokeAsync(HttpContext context)
         {
-            Log.Information("URL Hit Middleware");
-            // Call the next delegate/middleware in the pipeline
+            Log.Information($"URL Hit Middleware. Processing {context.Request.Method} Request");
+            
             await _next(context);
+
+            Log.Information($"{context.Request.Method} Request Processed. Sending Response");
         }
     }
 }

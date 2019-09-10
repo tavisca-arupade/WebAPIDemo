@@ -37,3 +37,44 @@
 2019-09-10 15:27:10.372 +05:30 [INF] URL Hit Middleware
 2019-09-10 15:27:13.106 +05:30 [INF] URL Hit Middleware
 2019-09-10 15:27:13.193 +05:30 [INF] Processing GET Method
+2019-09-10 15:34:35.044 +05:30 [INF] URL Hit Middleware. Processing GET Request
+2019-09-10 15:34:35.207 +05:30 [INF] Request Processed. Sending Response
+2019-09-10 15:34:47.822 +05:30 [INF] URL Hit Middleware. Processing GET Request
+2019-09-10 15:34:47.902 +05:30 [INF] Processing GET Method
+2019-09-10 15:34:47.916 +05:30 [INF] Request Processed. Sending Response
+2019-09-10 15:36:38.371 +05:30 [INF] URL Hit Middleware. Processing GET Request
+2019-09-10 15:36:38.520 +05:30 [INF] Request Processed. Sending Response
+2019-09-10 15:36:53.582 +05:30 [INF] URL Hit Middleware. Processing GET Request
+2019-09-10 15:36:53.983 +05:30 [INF] Request Processed. Sending Response
+2019-09-10 15:37:09.517 +05:30 [INF] URL Hit Middleware. Processing GET Request
+2019-09-10 15:37:09.779 +05:30 [INF] Request Processed. Sending Response
+2019-09-10 15:37:13.541 +05:30 [INF] URL Hit Middleware. Processing GET Request
+2019-09-10 15:37:13.639 +05:30 [INF] Processing GET Method
+2019-09-10 15:37:13.670 +05:30 [INF] Request Processed. Sending Response
+2019-09-10 15:37:40.355 +05:30 [INF] URL Hit Middleware. Processing GET Request
+2019-09-10 15:37:40.629 +05:30 [INF] Request Processed. Sending Response
+2019-09-10 15:37:43.907 +05:30 [INF] URL Hit Middleware. Processing GET Request
+2019-09-10 15:37:43.994 +05:30 [INF] Processing GET Method
+2019-09-10 15:37:44.022 +05:30 [INF] Request Processed. Sending Response
+2019-09-10 15:37:47.385 +05:30 [INF] URL Hit Middleware. Processing POST Request
+2019-09-10 15:37:47.453 +05:30 [INF] Processing POST Method
+2019-09-10 15:37:47.572 +05:30 [INF] Request Processed. Sending Response
+2019-09-10 15:37:50.940 +05:30 [INF] URL Hit Middleware. Processing PUT Request
+2019-09-10 15:37:50.971 +05:30 [INF] Processing PUT Method
+2019-09-10 15:37:50.994 +05:30 [INF] Request Processed. Sending Response
+2019-09-10 15:37:54.207 +05:30 [INF] URL Hit Middleware. Processing DELETE Request
+2019-09-10 15:37:54.222 +05:30 [INF] Processing DELETE Method
+2019-09-10 15:37:54.236 +05:30 [INF] Request Processed. Sending Response
+2019-09-10 15:39:31.603 +05:30 [INF] URL Hit Middleware. Processing GET Request
+2019-09-10 15:39:31.840 +05:30 [INF] GET Request Processed. Sending Response
+2019-09-10 15:39:37.696 +05:30 [INF] URL Hit Middleware. Processing GET Request
+2019-09-10 15:39:37.787 +05:30 [INF] Processing GET Method
+2019-09-10 15:39:37.816 +05:30 [INF] GET Request Processed. Sending Response
+2019-09-10 15:39:40.738 +05:30 [INF] URL Hit Middleware. Processing POST Request
+2019-09-10 15:39:40.800 +05:30 [INF] Processing POST Method
+2019-09-10 15:39:40.921 +05:30 [INF] POST Request Processed. Sending Response
+2019-09-10 15:40:36.500 +05:30 [INF] URL Hit Middleware. Processing GET Request
+2019-09-10 15:40:36.765 +05:30 [INF] GET Request Processed. Sending Response
+2019-09-10 15:40:40.046 +05:30 [INF] URL Hit Middleware. Processing DELETE Request
+2019-09-10 15:40:40.149 +05:30 [INF] Processing DELETE Method
+2019-09-10 15:40:40.174 +05:30 [INF] DELETE Request Processed. Sending Response
