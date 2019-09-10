@@ -99,7 +99,7 @@ namespace WebAPITestProject
                 errorData.BookNotFoundError
             };
             Book book = new Book { Name = "Wake", AuthorName = "Amanda Hocking", ISBNNumber = 67890, Price = 200.0 };
-            Assert.Equal(Newtonsoft.Json.JsonConvert.SerializeObject(new BookResponseModel { BookData = null, ErrorData = errorList }), Newtonsoft.Json.JsonConvert.SerializeObject(bookService.UpdateBook(00000, book)));
+            Assert.Equal(Newtonsoft.Json.JsonConvert.SerializeObject(new BookResponseModel { BookData = null, ErrorData = errorList }), Newtonsoft.Json.JsonConvert.SerializeObject(bookService.UpdateBook(00100, book)));
         }
 
         [Fact]
@@ -111,15 +111,15 @@ namespace WebAPITestProject
             {
                 errorData.BookNotFoundError
             };
-            Assert.Equal(Newtonsoft.Json.JsonConvert.SerializeObject(new BookResponseModel { BookData = null, ErrorData = errorList }), Newtonsoft.Json.JsonConvert.SerializeObject( bookService.DeleteBook(00000)));
+            Assert.Equal(Newtonsoft.Json.JsonConvert.SerializeObject(new BookResponseModel { BookData = null, ErrorData = errorList }), Newtonsoft.Json.JsonConvert.SerializeObject( bookService.DeleteBook(01000)));
         }
 
 
         [Theory]
-        [InlineData(400, "ERROR!!! Enter positive value for Price", "Wake", "Amanda Hocking", 12345, -200.0)]
+        [InlineData(400, "ERROR!!! Enter positive value for Price", "Wake", "Amanda Hocking", 1345, -200.0)]
         [InlineData(400,"ERROR!!! ID must be Positive","Wake", "Amanda Hocking", -12345, 200.0)]
-        [InlineData(400,"ERROR!!! Enter Valid Book Name","", "Amanda Hocking", 12345, 200.0)]
-        [InlineData(400,"ERROR!!! Enter Valid Author Name","Wake", "Amanda 123", 12345, 200.0)]
+        [InlineData(400,"ERROR!!! Enter Valid Book Name","", "Amanda Hocking", 1345, 200.0)]
+        [InlineData(400,"ERROR!!! Enter Valid Author Name","Wake", "Amanda 123", 1345, 200.0)]
         //[InlineData("ERROR!!! Enter Valid Author Name,ERROR!!! Enter positive ISBN Number,ERROR!!! Enter positive value for Price", "Wake", "Amanda 123", -12345, -200.0)]
         public void Test_when_adding_newBook_contains_invalid_data_should_return_false(int statusCode, string errorMessage, string Name, string AuthorName,int ISBNNumber,float Price)
         {

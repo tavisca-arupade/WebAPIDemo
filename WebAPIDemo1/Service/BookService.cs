@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FluentValidation.Results;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,25 +22,13 @@ namespace WebAPIDemo1.Model
         public BookResponseModel AddBook(Book book)
         {
             List<Error> errorMessages = new List<Error>();
-            if (!validation.IsNameValid(book.Name))
+            ValidationResult result = validation.Validate(book);
+
+            if (!result.IsValid)
             {
-               errorMessages.Add(errorData.InvalidBookNameError);
+                errorMessages = validation.GetErrorList();
             }
 
-            if(!validation.IsAuthorNameValid(book.AuthorName))
-            {
-                errorMessages.Add(errorData.InvalidAuthorNameError);
-            }
-
-            if(validation.IsInputNegative(book.ISBNNumber))
-            {
-                errorMessages.Add(errorData.IDNegativeError);
-            }
-            
-            if(!validation.IsPriceValid(book.Price))
-            {
-                errorMessages.Add(errorData.NegativePriceError);
-            }
 
             if (errorMessages.Count > 0)
             {
@@ -55,7 +44,7 @@ namespace WebAPIDemo1.Model
 
         public BookResponseModel UpdateBook(int id, Book book)
         {
-            if (validation.IsInputNegative(id))
+            if (!validation.IsInputNegative(id))
                 Response.ErrorData = new List<Error> { errorData.IDNegativeError };
             else
                 Response = _books.UpdateBook(id, book);
@@ -64,7 +53,7 @@ namespace WebAPIDemo1.Model
 
         public BookResponseModel DeleteBook(int id)
         {
-            if (validation.IsInputNegative(id))
+            if (!validation.IsInputNegative(id))
                 Response.ErrorData = new List<Error> { errorData.IDNegativeError };
             else
                 Response = _books.DeleteBook(id);
@@ -73,7 +62,7 @@ namespace WebAPIDemo1.Model
 
         public BookResponseModel GetBookById(int id)
         {
-            if (validation.IsInputNegative(id))
+            if (!validation.IsInputNegative(id))
                 Response.ErrorData = new List<Error> { errorData.IDNegativeError };
             else 
                 Response = _books.GetBookById(id);

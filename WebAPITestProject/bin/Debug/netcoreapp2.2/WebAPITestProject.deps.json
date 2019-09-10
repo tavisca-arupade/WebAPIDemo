@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "29d02527de41ed018910b2d84792da5add07480d"
+    "signature": "0c17fd6e0816f2b0624ff5985629421c9df3350f"
   },
   "compilationOptions": {},
   "targets": {
@@ -26,6 +26,17 @@
           "lib/netcoreapp2.0/FluentAssertions.dll": {
             "assemblyVersion": "5.9.0.0",
             "fileVersion": "5.9.0.0"
+          }
+        }
+      },
+      "FluentValidation/8.4.0": {
+        "dependencies": {
+          "System.ComponentModel.Annotations": "4.4.1"
+        },
+        "runtime": {
+          "lib/netstandard2.0/FluentValidation.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.4.0.0"
           }
         }
       },
@@ -920,6 +931,7 @@
           "System.Runtime": "4.3.0"
         }
       },
+      "System.ComponentModel.Annotations/4.4.1": {},
       "System.ComponentModel.EventBasedAsync/4.0.11": {
         "dependencies": {
           "System.Resources.ResourceManager": "4.3.0",
@@ -1999,6 +2011,7 @@
       "WebAPIDemo1/1.0.0": {
         "dependencies": {
           "FluentAssertions": "5.9.0",
+          "FluentValidation": "8.4.0",
           "Microsoft.Extensions.Configuration": "2.2.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.3",
           "Serilog": "2.8.0",
@@ -2026,6 +2039,13 @@
       "sha512": "sha512-JZxb5DuspmuH4A5p9bfj060evQnwIUkxxfFMG9F/pa7gl1Ry2r2nuQbu5G4UWGQQTtpTxPpVowqNDdBkA0G2Mw==",
       "path": "fluentassertions/5.9.0",
       "hashPath": "fluentassertions.5.9.0.nupkg.sha512"
+    },
+    "FluentValidation/8.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/VApywgD2sqD3aB1tzub6SIItmwxXN0D5yAiP3kuFHmjYO1W+Ryi531/m4O03/hlfcYrBgewDJn7Jd1Xk0vTdw==",
+      "path": "fluentvalidation/8.4.0",
+      "hashPath": "fluentvalidation.8.4.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Razor.Language/2.2.0": {
       "type": "package",
@@ -2460,6 +2480,13 @@
       "sha512": "sha512-oBZFnm7seFiVfugsIyOvQCWobNZs7FzqDV/B7tx20Ep/l3UUFCPDkdTnCNaJZTU27zjeODmy2C/cP60u3D4c9w==",
       "path": "system.componentmodel/4.0.1",
       "hashPath": "system.componentmodel.4.0.1.nupkg.sha512"
+    },
+    "System.ComponentModel.Annotations/4.4.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ToiYqSCioqhtspq2O/jYKtyTC/T0uwWHBTYlzCi6PRbSSHArN1IaRWeHffDamvms5sye5FDUWCfNZgubQpNRsA==",
+      "path": "system.componentmodel.annotations/4.4.1",
+      "hashPath": "system.componentmodel.annotations.4.4.1.nupkg.sha512"
     },
     "System.ComponentModel.EventBasedAsync/4.0.11": {
       "type": "package",

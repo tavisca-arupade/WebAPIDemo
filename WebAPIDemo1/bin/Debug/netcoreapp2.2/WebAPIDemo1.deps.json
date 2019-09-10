@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETCoreApp,Version=v2.2",
-    "signature": "33751d187969cc231ec65acbb31a1e61bb104eff"
+    "signature": "c8035a34ffe2c7d0c388139fbaae7ff612752b9f"
   },
   "compilationOptions": {
     "defines": [
@@ -25,6 +25,7 @@
       "WebAPIDemo1/1.0.0": {
         "dependencies": {
           "FluentAssertions": "5.9.0",
+          "FluentValidation": "8.4.0",
           "Microsoft.AspNetCore.App": "2.2.0",
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
           "Microsoft.Extensions.Configuration": "2.2.0",
@@ -56,6 +57,20 @@
         },
         "compile": {
           "lib/netcoreapp2.0/FluentAssertions.dll": {}
+        }
+      },
+      "FluentValidation/8.4.0": {
+        "dependencies": {
+          "System.ComponentModel.Annotations": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/FluentValidation.dll": {
+            "assemblyVersion": "8.0.0.0",
+            "fileVersion": "8.4.0.0"
+          }
+        },
+        "compile": {
+          "lib/netstandard2.0/FluentValidation.dll": {}
         }
       },
       "Microsoft.CodeAnalysis.CSharp.Workspaces/2.8.0": {
@@ -3706,6 +3721,13 @@
       "sha512": "sha512-JZxb5DuspmuH4A5p9bfj060evQnwIUkxxfFMG9F/pa7gl1Ry2r2nuQbu5G4UWGQQTtpTxPpVowqNDdBkA0G2Mw==",
       "path": "fluentassertions/5.9.0",
       "hashPath": "fluentassertions.5.9.0.nupkg.sha512"
+    },
+    "FluentValidation/8.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/VApywgD2sqD3aB1tzub6SIItmwxXN0D5yAiP3kuFHmjYO1W+Ryi531/m4O03/hlfcYrBgewDJn7Jd1Xk0vTdw==",
+      "path": "fluentvalidation/8.4.0",
+      "hashPath": "fluentvalidation.8.4.0.nupkg.sha512"
     },
     "Microsoft.CodeAnalysis.CSharp.Workspaces/2.8.0": {
       "type": "package",

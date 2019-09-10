@@ -14,6 +14,18 @@
           "lib/netcoreapp2.0/FluentAssertions.dll": {}
         }
       },
+      "FluentValidation/8.4.0": {
+        "type": "package",
+        "dependencies": {
+          "System.ComponentModel.Annotations": "4.4.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/FluentValidation.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/FluentValidation.dll": {}
+        }
+      },
       "Microsoft.AspNet.WebApi.Client/5.2.6": {
         "type": "package",
         "dependencies": {
@@ -4886,6 +4898,25 @@
         "lib/netstandard2.0/FluentAssertions.dll",
         "lib/netstandard2.0/FluentAssertions.pdb",
         "lib/netstandard2.0/FluentAssertions.xml"
+      ]
+    },
+    "FluentValidation/8.4.0": {
+      "sha512": "/VApywgD2sqD3aB1tzub6SIItmwxXN0D5yAiP3kuFHmjYO1W+Ryi531/m4O03/hlfcYrBgewDJn7Jd1Xk0vTdw==",
+      "type": "package",
+      "path": "fluentvalidation/8.4.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "fluentvalidation.8.4.0.nupkg.sha512",
+        "fluentvalidation.nuspec",
+        "lib/net45/FluentValidation.dll",
+        "lib/net45/FluentValidation.xml",
+        "lib/netstandard1.1/FluentValidation.dll",
+        "lib/netstandard1.1/FluentValidation.xml",
+        "lib/netstandard1.6/FluentValidation.dll",
+        "lib/netstandard1.6/FluentValidation.xml",
+        "lib/netstandard2.0/FluentValidation.dll",
+        "lib/netstandard2.0/FluentValidation.xml"
       ]
     },
     "Microsoft.AspNet.WebApi.Client/5.2.6": {
@@ -13310,6 +13341,7 @@
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
       "FluentAssertions >= 5.9.0",
+      "FluentValidation >= 8.4.0",
       "Microsoft.AspNetCore.App >= 2.2.0",
       "Microsoft.AspNetCore.Razor.Design >= 2.2.0",
       "Microsoft.Extensions.Configuration >= 2.2.0",
@@ -13367,6 +13399,10 @@
           "FluentAssertions": {
             "target": "Package",
             "version": "[5.9.0, )"
+          },
+          "FluentValidation": {
+            "target": "Package",
+            "version": "[8.4.0, )"
           },
           "Microsoft.AspNetCore.App": {
             "suppressParent": "All",

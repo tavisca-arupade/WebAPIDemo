@@ -17,3 +17,7 @@
 2019-09-09 17:43:09.020 +05:30 [INF] Processing POST Method
 2019-09-09 17:43:26.081 +05:30 [INF] Processing PUT Method
 2019-09-09 17:43:49.473 +05:30 [INF] Processing DELETE Method
+2019-09-10 10:36:21.778 +05:30 [INF] Processing GET Method
+2019-09-10 10:36:31.430 +05:30 [INF] Processing POST Method
+2019-09-10 10:36:36.785 +05:30 [INF] Processing POST Method
+2019-09-10 10:36:44.224 +05:30 [INF] Processing POST Method

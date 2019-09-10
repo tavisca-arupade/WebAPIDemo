@@ -16,7 +16,7 @@ namespace WebAPIDemo1
         public static void Main(string[] args)
         {
 
-            Log.Logger = new LoggerConfiguration().WriteTo.File("myLog.txt").CreateLogger();
+            Log.Logger = new LoggerConfiguration().WriteTo.File("Log/myLog.txt").CreateLogger();
 
             CreateWebHostBuilder(args).Build().Run();
         }
