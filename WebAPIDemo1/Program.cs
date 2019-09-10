@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace WebAPIDemo1
 {
@@ -14,6 +15,9 @@ namespace WebAPIDemo1
     {
         public static void Main(string[] args)
         {
+
+            Log.Logger = new LoggerConfiguration().WriteTo.File("myLog.txt").CreateLogger();
+
             CreateWebHostBuilder(args).Build().Run();
         }
 

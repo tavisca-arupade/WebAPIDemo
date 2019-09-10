@@ -1,0 +1,19 @@
+2019-09-09 15:08:54.207 +05:30 [INF] This is me
+2019-09-09 15:14:54.568 +05:30 [INF] This is me in ctor
+2019-09-09 15:15:47.458 +05:30 [INF] This is me in ctor
+2019-09-09 15:17:54.663 +05:30 [INF] Processing GET Method
+2019-09-09 15:20:19.800 +05:30 [INF] Processing GET Method
+2019-09-09 15:23:20.228 +05:30 [INF] Processing GET Method
+2019-09-09 15:23:40.989 +05:30 [INF] Processing GET Method with ID
+2019-09-09 15:24:57.450 +05:30 [INF] Processing POST Method
+2019-09-09 15:25:12.788 +05:30 [INF] Processing GET Method with ID
+2019-09-09 15:33:36.363 +05:30 [INF] Processing GET Method
+2019-09-09 15:47:51.969 +05:30 [INF] Processing GET Method
+2019-09-09 15:49:13.207 +05:30 [INF] Processing DELETE Method
+2019-09-09 16:05:12.985 +05:30 [INF] Processing POST Method
+2019-09-09 16:05:36.993 +05:30 [INF] Processing PUT Method
+2019-09-09 16:08:37.481 +05:30 [INF] Processing GET Method
+2019-09-09 17:42:54.522 +05:30 [INF] Processing GET Method
+2019-09-09 17:43:09.020 +05:30 [INF] Processing POST Method
+2019-09-09 17:43:26.081 +05:30 [INF] Processing PUT Method
+2019-09-09 17:43:49.473 +05:30 [INF] Processing DELETE Method
