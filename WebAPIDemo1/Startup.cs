@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using WebAPIDemo1.MiddleWare;
 using Microsoft.Extensions.Options;
 
 namespace WebAPIDemo1
@@ -43,6 +44,7 @@ namespace WebAPIDemo1
             }
 
             app.UseHttpsRedirection();
+            app.UseMiddleware<BookAPIMiddleWare>();
             app.UseMvc();
         }
 
