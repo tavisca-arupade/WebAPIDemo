@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using WebAPIDemo1.Model;
 
-namespace WebAPIDemo1.Service
+namespace WebAPIDemo1.Database
 {
-    public interface IBookService
+    public interface IBookDatabase
     {
         IEnumerable<Book> GetBooks();
-        BookResponseModel GetBookById(int id);
         BookResponseModel AddBook(Book book);
         BookResponseModel UpdateBook(int id, Book book);
+        BookResponseModel GetBookById(int id);
         BookResponseModel DeleteBook(int id);
     }
 }

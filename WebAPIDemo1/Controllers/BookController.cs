@@ -15,17 +15,18 @@ namespace WebAPIDemo1.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
-        IBookService _bookService = new BookService();
+        //IBookService _bookService = new BookService();
+        IBookService _bookService;
 
-        
+
         public static List<Book> bookList = new List<Book> {
             new Book { Name = "Tide", AuthorName = "Amanda Hocking", ISBNNumber = 12345, Price = 200.0 },
             new Book { Name = "Trylle", AuthorName = "Amanda Hocking", ISBNNumber = 13445, Price = 200.0 }
         };
 
-        public BookController()
+        public BookController(IBookService bookService)
         {
-            
+            this._bookService = bookService;
         }
 
 

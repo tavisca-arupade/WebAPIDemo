@@ -12,7 +12,7 @@ namespace WebAPITestProject
         [Fact]
         public void Test_GetBooks_should_return_allBooks()
         {
-            BookService bookService = new BookService();
+            BookService bookService = new BookService(new Validation());
 
             List<Book> _bookList = new List<Book> {
             new Book { Name = "Tide", AuthorName = "Amanda Hocking", ISBNNumber = 12345, Price = 200.0 },
@@ -25,7 +25,7 @@ namespace WebAPITestProject
         [Fact]
         public void Test_GetBookByID_should_return_book()
         {
-            BookService bookService = new BookService();
+            BookService bookService = new BookService(new Validation());
 
             Book book = new Book { Name = "Tide", AuthorName = "Amanda Hocking", ISBNNumber = 12345, Price = 200.0 };
 
@@ -35,7 +35,7 @@ namespace WebAPITestProject
         [Fact]
         public void Test_whether_book_added_to_database()
         {
-            BookService bookService = new BookService();
+            BookService bookService = new BookService(new Validation());
             Book book = new Book { Name = "Wake", AuthorName = "Amanda Hocking", ISBNNumber = 34590, Price = 200.0 };
             Assert.Equal(Newtonsoft.Json.JsonConvert.SerializeObject(new BookResponseModel { BookData=book,ErrorData=null}), Newtonsoft.Json.JsonConvert.SerializeObject(bookService.AddBook(book)));
         }
@@ -43,7 +43,7 @@ namespace WebAPITestProject
         [Fact]
         public void Test_whether_book_data_updated_in_database()
         {
-            BookService bookService = new BookService();
+            BookService bookService = new BookService(new Validation());
             Book book = new Book { Name = "Tide", AuthorName = "Amanda", ISBNNumber = 12345, Price = 200.0 };
             bookService.UpdateBook(12345, book);
             Assert.Equal(Newtonsoft.Json.JsonConvert.SerializeObject(new BookResponseModel { BookData = book, ErrorData = null }), Newtonsoft.Json.JsonConvert.SerializeObject(bookService.GetBookById(12345)));
@@ -52,7 +52,7 @@ namespace WebAPITestProject
         [Fact]
         public void Test_whether_book_deleted_from_database()
         {
-            BookService bookService = new BookService();
+            BookService bookService = new BookService(new Validation());
             ErrorData errorData = new ErrorData();
             List<Error> errorList = new List<Error>
             {
@@ -67,7 +67,7 @@ namespace WebAPITestProject
         [Fact]
         public void Test_when_id_is_negative_while_updating_should_return_invalid()
         {
-            BookService bookService = new BookService();
+            BookService bookService = new BookService(new Validation());
             ErrorData errorData = new ErrorData();
             List<Error> errorList = new List<Error>
             {
@@ -80,7 +80,7 @@ namespace WebAPITestProject
         [Fact]
         public void Test_when_id_is_negative_while_deleting_should_return_invalid()
         {
-            BookService bookService = new BookService();
+            BookService bookService = new BookService(new Validation());
             ErrorData errorData = new ErrorData();
             List<Error> errorList = new List<Error>
             {
@@ -92,7 +92,7 @@ namespace WebAPITestProject
         [Fact]
         public void Test_when_updating_book_not_present_should_return_false()
         {
-            BookService bookService = new BookService();
+            BookService bookService = new BookService(new Validation());
             ErrorData errorData = new ErrorData();
             List<Error> errorList = new List<Error>
             {
@@ -105,7 +105,7 @@ namespace WebAPITestProject
         [Fact]
         public void Test_when_deleting_book_not_present_should_return_false()
         {
-            BookService bookService = new BookService();
+            BookService bookService = new BookService(new Validation());
             ErrorData errorData = new ErrorData();
             List<Error> errorList = new List<Error>
             {
@@ -123,7 +123,7 @@ namespace WebAPITestProject
         //[InlineData("ERROR!!! Enter Valid Author Name,ERROR!!! Enter positive ISBN Number,ERROR!!! Enter positive value for Price", "Wake", "Amanda 123", -12345, -200.0)]
         public void Test_when_adding_newBook_contains_invalid_data_should_return_false(int statusCode, string errorMessage, string Name, string AuthorName,int ISBNNumber,float Price)
         {
-            BookService bookService = new BookService();
+            BookService bookService = new BookService(new Validation());
             
             Book book = new Book { Name = Name, AuthorName = AuthorName, ISBNNumber = ISBNNumber, Price = Price };
             List<Error> errorList = new List<Error>
@@ -139,7 +139,7 @@ namespace WebAPITestProject
         [Fact]
         public void Test_when_adding_newBook_contains_multiple_invalid_data_should_return_false()
         {
-            BookService bookService = new BookService();
+            BookService bookService = new BookService(new Validation());
             
             Book book = new Book { Name = "Wake", AuthorName = "Amanda 123", ISBNNumber = -12345, Price = -200.0 };
             ErrorData errorData = new ErrorData();
@@ -159,7 +159,7 @@ namespace WebAPITestProject
 
         public void Test_when_user_enters_duplicate_ISBNNumber_returns_error_message()
         {
-            BookService bookService = new BookService();
+            BookService bookService = new BookService(new Validation());
             Book book = new Book { Name = "Wake", AuthorName = "Amanda Hocking", ISBNNumber = 12345, Price = 200.0 };
             ErrorData errorData = new ErrorData();
             

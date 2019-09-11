@@ -5,18 +5,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebAPIDemo1.Database;
 using WebAPIDemo1.Service;
+using Serilog;
 
 namespace WebAPIDemo1.Model
 {
     public class BookService : IBookService
     {
         private BookDatabase _books = new BookDatabase();
-        Validation validation = new Validation();
+        //Validation validation = new Validation();
+        IValidation validation;
         BookResponseModel Response = new BookResponseModel();
         ErrorData errorData = new ErrorData();
 
+        public BookService(IValidation validation)
+        {
+            this.validation = validation;
+        }
+
         public IEnumerable<Book> GetBooks()
         {
+            Log.Information("Service Layer - Processing GET");
            return _books.GetBooks();
         }
         public BookResponseModel AddBook(Book book)
@@ -62,6 +70,7 @@ namespace WebAPIDemo1.Model
 
         public BookResponseModel GetBookById(int id)
         {
+            Log.Information($"Service Layer - Processing GET with id {id}");
             if (!validation.IsInputNegative(id))
                 Response.ErrorData = new List<Error> { errorData.IDNegativeError };
             else 

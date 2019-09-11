@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using WebAPIDemo1.Model;
 using System.Web;
 using WebAPIDemo1.Service;
+using Serilog;
 
 namespace WebAPIDemo1.Database
 {
-    public class BookDatabase
+    public class BookDatabase:IBookDatabase
     {
         private static List<Book> _bookList = new List<Book> {
             new Book { Name = "Tide", AuthorName = "Amanda Hocking", ISBNNumber = 12345, Price = 200.0 },
@@ -21,6 +22,7 @@ namespace WebAPIDemo1.Database
 
         public IEnumerable<Book> GetBooks()
         {
+            Log.Debug("DataBase Layer - Processing GET");
             return _bookList;
         }
 
@@ -59,6 +61,7 @@ namespace WebAPIDemo1.Database
 
         public BookResponseModel GetBookById(int id)
         {
+            Log.Debug($"DataBase Layer - Processing GET with id {id}");
             try
             {
                 Book book = _bookList.Where(n => n.ISBNNumber == id).First();

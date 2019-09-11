@@ -11,6 +11,12 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using WebAPIDemo1.MiddleWare;
 using Microsoft.Extensions.Options;
+using WebAPIDemo1.Service;
+using WebAPIDemo1.Model;
+using System.ComponentModel;
+using StructureMap;
+using System.Web;
+using WebAPIDemo1.BookStructureMap;
 
 namespace WebAPIDemo1
 {
@@ -24,9 +30,33 @@ namespace WebAPIDemo1
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
-        public void ConfigureServices(IServiceCollection services)
+        //public void ConfigureServices(IServiceCollection services)
+        //{
+        //    services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+        //    StructureMapConfiguration.AddRegistry(new ServiceRegistry());
+
+        //    //GlobalConfiguration.Configuration.UseStructureMap<ServiceRegistry>();
+
+        //    //services.Add<ServiceRegistry>();
+
+        //    //services.AddSingleton<IBookService, BookService>();
+        //}
+
+        public IServiceProvider ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+   
+            services.AddMvc();
+
+            var container = new StructureMap.Container();
+            container.Configure(c =>
+            {
+                c.Populate(services);                
+                c.AddRegistry<ServiceRegistry>();
+                c.AddRegistry<BookDatabaseRegistry>();
+                c.AddRegistry<ValidationRegistry>();
+            });
+
+            return container.GetInstance<IServiceProvider>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,4 +79,5 @@ namespace WebAPIDemo1
         }
 
     }
+
 }

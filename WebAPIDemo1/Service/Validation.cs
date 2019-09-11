@@ -8,7 +8,7 @@ using FluentValidation;
 
 namespace WebAPIDemo1.Service
 {
-    public class Validation:AbstractValidator<Book>
+    public class Validation:AbstractValidator<Book>,IValidation
     {
         ErrorData errorData = new ErrorData();
         private List<Error> errorList = new List<Error>();
