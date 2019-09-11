@@ -1,0 +1,17 @@
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPITestProject\bin\Release\netcoreapp2.2\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPITestProject\bin\Release\netcoreapp2.2\xunit.runner.reporters.netcoreapp10.dll
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPITestProject\bin\Release\netcoreapp2.2\xunit.runner.utility.netcoreapp10.dll
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPITestProject\bin\Release\netcoreapp2.2\WebAPITestProject.deps.json
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPITestProject\bin\Release\netcoreapp2.2\WebAPITestProject.runtimeconfig.json
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPITestProject\bin\Release\netcoreapp2.2\WebAPITestProject.runtimeconfig.dev.json
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPITestProject\bin\Release\netcoreapp2.2\WebAPITestProject.dll
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPITestProject\bin\Release\netcoreapp2.2\WebAPITestProject.pdb
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPITestProject\bin\Release\netcoreapp2.2\WebAPIDemo1.dll
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPITestProject\bin\Release\netcoreapp2.2\WebAPIDemo1.pdb
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPITestProject\obj\Release\netcoreapp2.2\WebAPITestProject.csprojAssemblyReference.cache
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPITestProject\obj\Release\netcoreapp2.2\WebAPITestProject.csproj.CoreCompileInputs.cache
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPITestProject\obj\Release\netcoreapp2.2\WebAPITestProject.AssemblyInfoInputs.cache
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPITestProject\obj\Release\netcoreapp2.2\WebAPITestProject.AssemblyInfo.cs
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPITestProject\obj\Release\netcoreapp2.2\WebAPITestProject.csproj.CopyComplete
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPITestProject\obj\Release\netcoreapp2.2\WebAPITestProject.dll
+C:\Users\arupade\source\repos\WebAPIDemo1\WebAPITestProject\obj\Release\netcoreapp2.2\WebAPITestProject.pdb
